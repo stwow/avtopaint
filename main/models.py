@@ -42,18 +42,9 @@ class Repair_Request(models.Model):
 
 
 class Reviews(models.Model):
-    appraisals = (
-        ('1', 'Плохо'),
-        ('2', 'Неплохо'),
-        ('3', 'Нормально'),
-        ('4', 'Хорошо'),
-        ('5', 'Отлично'),
-    )
-
     name = models.CharField(max_length=30)
     evaluation = models.CharField(max_length=25)
     description = models.TextField()
-
 
     def __str__(self):
         return self.name
