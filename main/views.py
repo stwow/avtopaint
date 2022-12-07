@@ -1,12 +1,11 @@
-from django.core.exceptions import ValidationError
-from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from .forms import *
 from .models import *
 import json
 
 
-def index(request):
+def main(request):
     if request.POST:
         form = RepairRequest(request.POST)
         if form.is_valid():
@@ -22,9 +21,9 @@ def index(request):
     return render(request, 'main/index.html', context)
 
 
-def index1(request):
+def set_repair_request_photo(request):
     if request.POST:
-        form = RepairRequestPhoto(request.POST, request.FILES)  #добавить возможность добавления нескольких файлов
+        form = RepairRequestPhoto(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return HttpResponse(json.dumps({"haveErrors": True}))
@@ -34,7 +33,7 @@ def index1(request):
     return redirect('index')
 
 
-def indexes(request):
+def set_review(request):
     if request.POST:
         form = ReviewsAll(request.POST)
         if form.is_valid():

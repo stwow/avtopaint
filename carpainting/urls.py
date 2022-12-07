@@ -3,18 +3,16 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
-from main.views import index, index1, indexes
+from main.views import main, set_repair_request_photo, set_review
 
 urlpatterns = [
-    path('', index, name = 'index'),
-    path('form/', index1, name = 'index1'),
-    path('form1/', indexes, name = 'indexes'),
+    path('', main, name='main'),
+    path('repair_request/', set_repair_request_photo, name='set_repair_request_photo'),
+    path('review/', set_review, name='set_review'),
     path('admin/', admin.site.urls),
     path('captcha/', include('captcha.urls')),
-    # path('review/<slug>/', show_review, name = 'show'),
-
 ]
 
-if settings.DEBUG: #если нашь проект находится в режиме дебага, мы будем использ. локальный медиа контент
-    urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "avtopaint"
+version = "0.1.0"
+description = ""
+authors = ["st"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+3 = "^0.0.0"
+captcha = "0.3"
+Django = "3.1.7"
+django-simple-captcha = "0.5.14"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
